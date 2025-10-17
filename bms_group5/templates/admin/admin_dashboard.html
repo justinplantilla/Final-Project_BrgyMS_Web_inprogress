@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barangay Portal - Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/admindashboard.css" />
+  <!-- Heroicons CDN for white sidebar icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="flex bg-gray-50 h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 bg-gradient-to-b from-indigo-700 to-purple-600 text-white flex flex-col">
+    <div class="px-5 py-4 border-b border-white/20">
+      <h1 class="font-bold text-lg">Barangay Portal - Admin</h1>
+      <p class="text-xs font-light">Silangan, Lazaan, Nagcarlan Laguna</p>
+    </div>
+
+    <nav class="flex-1 px-4 py-4 space-y-1 text-sm">
+      <!-- Active Dashboard -->
+      <a href="{{ url_for('admin.admindashboard') }}" class="nav-item active">
+  <i data-feather="layout" class="icon"></i>
+  <span>Dashboard</span>
+</a>
+
+<a href="{{ url_for('admin.adminresidents') }}" class="nav-item">
+  <i data-feather="users" class="icon"></i>
+  <span>Resident Management</span>
+</a>
+
+<a href="{{ url_for('admin.adminofficials') }}" class="nav-item">
+  <i data-feather="user-check" class="icon"></i>
+  <span>Barangay Officials</span>
+</a>
+
+<a href="{{ url_for('admin.admincertificates') }}" class="nav-item">
+  <i data-feather="user-check" class="icon"></i>
+  <span>Certificates</span>
+</a>
+
+<a href="{{ url_for('admin.admincomplaints') }}" class="nav-item">
+  <i data-feather="alert-circle" class="icon"></i>
+  <span>Complaints/Blotter</span>
+</a>
+
+<a href="{{ url_for('admin.adminannouncement') }}" class="nav-item">
+  <i data-feather="volume-2" class="icon"></i>
+  <span>Announcements</span>
+</a>
+
+<a href="{{ url_for('admin.adminsettings') }}" class="nav-item">
+  <i data-feather="settings" class="icon"></i>
+  <span>Settings</span>
+</a>
+
+<a href="{{ url_for('logout') }}" class="nav-item">
+  <i data-feather="log-out" class="icon"></i>
+  <span>Logout</span>
+</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 p-8 overflow-y-auto">
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-2xl font-semibold">Dashboard</h1>
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div class="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center">
+          <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 0114 0H3z"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <p class="text-gray-600 mb-6">Welcome back, <strong>Admin</strong></p>
+
+    <!-- DASHBOARD CARDS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Resident Management -->
+      <div class="card hover-animate">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="font-semibold text-lg">Resident Management</h2>
+            <p class="text-gray-500 text-sm">Manage resident profiles, records, and information</p>
+          </div>
+          <div class="text-indigo-500 text-2xl">
+            <i data-feather="users"></i>
+          </div>
+        </div>
+        <p class="mt-4 text-3xl font-bold">1,247</p>
+        <p class="text-gray-500 text-sm">Total Residents</p>
+      </div>
+
+      <!-- Barangay Officials -->
+      <div class="card hover-animate">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="font-semibold text-lg">Barangay Officials</h2>
+            <p class="text-gray-500 text-sm">View and manage barangay official profiles</p>
+          </div>
+          <div class="text-green-500 text-2xl">
+            <i data-feather="user-check"></i>
+          </div>
+        </div>
+        <p class="mt-4 text-3xl font-bold">15</p>
+        <p class="text-gray-500 text-sm">Active Officials</p>
+      </div>
+
+      <!-- Certificates -->
+      <div class="card hover-animate">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="font-semibold text-lg">Certificates</h2>
+            <p class="text-gray-500 text-sm">Issue and track barangay certificates</p>
+          </div>
+          <div class="text-yellow-500 text-2xl">
+            <i data-feather="file-text"></i>
+          </div>
+        </div>
+        <p class="mt-4 text-3xl font-bold">89</p>
+        <p class="text-gray-500 text-sm">This Month</p>
+      </div>
+
+      <!-- Complaints -->
+      <div class="card hover-animate">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="font-semibold text-lg">Complaints</h2>
+            <p class="text-gray-500 text-sm">Handle resident complaints and issues</p>
+          </div>
+          <div class="text-red-500 text-2xl">
+            <i data-feather="alert-circle"></i>
+          </div>
+        </div>
+        <p class="mt-4 text-3xl font-bold">23</p>
+        <p class="text-gray-500 text-sm">Pending Review</p>
+      </div>
+
+      <!-- Announcements -->
+      <div class="card hover-animate">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="font-semibold text-lg">Announcements</h2>
+            <p class="text-gray-500 text-sm">Create and manage public announcements</p>
+          </div>
+          <div class="text-purple-500 text-2xl">
+            <i data-feather="volume-2"></i>
+          </div>
+        </div>
+        <p class="mt-4 text-3xl font-bold">12</p>
+        <p class="text-gray-500 text-sm">Active Posts</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/admin_dashbaord.js"></script>
+  <script>
+    feather.replace(); // Initialize icons
+  </script>
+</body>
+</html>
